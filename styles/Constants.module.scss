@@ -1,0 +1,24 @@
+$primary-color-5: hsl(212, 4%, 5%);
+$primary-color-10: hsl(212, 4%, 10%);
+$primary-color-15: hsl(212, 4%, 15%);
+$primary-color-20: hsl(212, 4%, 20%);
+$primary-color-30: hsl(212, 4%, 30%);
+$primary-color-40: hsl(212, 4%, 40%);
+$primary-color-50: hsl(212, 4%, 50%);
+$primary-color-60: hsl(212, 4%, 60%);
+$primary-color-70: hsl(212, 4%, 70%);
+$primary-color-80: hsl(212, 4%, 80%);
+$primary-color-90: hsl(212, 4%, 90%);
+$primary-color-95: hsl(212, 4%, 95%);
+
+$text-gradient: linear-gradient(
+  90deg,
+  rgba(94, 71, 123, 1) 0%,
+  rgba(158, 127, 135, 1) 100%
+);
+
+$breakpoint-extra-large: 1400px;
+$breakpoint-large: 1200px;
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet: 760px;
+$breakpoint-mobile: 480px;
