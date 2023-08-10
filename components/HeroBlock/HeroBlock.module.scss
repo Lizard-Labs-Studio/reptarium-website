@@ -1,0 +1,47 @@
+.heroBlockWrapper {
+  width: 100%;
+  max-width: 2000px;
+  position: relative;
+
+  .heroBlock {
+    width: 100%;
+    height: 760px;
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      margin: 0;
+      font-family: "Roboto", sans-serif;
+      font-size: 80px;
+      line-height: 90%;
+      font-weight: 900;
+      text-shadow: 0 0 8px rgba(12, 13, 13, 0.25);
+      margin: 300px 0 0 0;
+      color: white;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(
+      0deg,
+      rgba(12, 13, 13, 1) 0%,
+      rgba(12, 13, 13, 0) 100%
+    );
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  max-height: 760px;
+  position: absolute;
+  top: 0;
+  object-fit: cover;
+  z-index: -1;
+}

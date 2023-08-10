@@ -1,0 +1,129 @@
+@import "../../styles/Constants.module.scss";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  color: $primary-color-40;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  gap: 24px;
+  margin: 0 0 40px 0;
+
+  a {
+    color: $primary-color-40;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: 0.1s all ease-in-out;
+
+    &:hover {
+      color: $primary-color-60;
+      text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
+      transition: 0.1s all ease-in-out;
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 0.5px;
+    box-shadow: 0px 0.5px 0px $primary-color-20;
+    position: relative;
+    z-index: 1;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 80px;
+    z-index: 3;
+    position: relative;
+
+    .logoWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      .logo {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        color: $primary-color-95;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logoDescription {
+        font-size: 14px;
+        color: $primary-color-50;
+        font-weight: lighter;
+        margin: 0;
+        letter-spacing: 0.02em;
+      }
+    }
+
+    .linkWrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 58px;
+
+      .linkBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .linkBlockTitle {
+          font-weight: 400;
+          color: $primary-color-70;
+          margin: 0;
+        }
+
+        .linkList {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 30px;
+      flex-direction: column;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    z-index: 3;
+    position: relative;
+
+    .copyright {
+      text-align: center;
+    }
+
+    // @media (max-width: $breakpoint-mobile) {
+    //   flex-direction: column;
+    //   gap: 12px;
+    // }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    margin: 0 0 92px 0;
+    gap: 20px;
+  }
+}
