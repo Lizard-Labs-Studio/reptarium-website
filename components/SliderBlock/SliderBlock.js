@@ -2,12 +2,12 @@ import Image from "next/image";
 import Slider from "../Slider/Slider";
 import styles from "./SliderBlock.module.scss";
 
-const SliderBlock = () => {
+const SliderBlock = ({ imageSliderTitle, imageSlider }) => {
   return (
     <div className="container">
       <div className={styles.sliderBlock}>
         <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>IMAGES</h1>
+          <h1 className={styles.title}>{imageSliderTitle}</h1>
           <Image
             alt="Title Element"
             width={47}
@@ -15,7 +15,7 @@ const SliderBlock = () => {
             src="/Assets/titleElement.svg"
           />
         </div>
-        <Slider />
+        <Slider imageSlider={imageSlider} />
       </div>
     </div>
   );

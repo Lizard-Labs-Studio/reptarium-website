@@ -2,11 +2,19 @@ import styles from "./HeroBlock.module.scss";
 
 const HeroBlock = () => {
   return (
-    <div className={styles.heroBlockWrapper}>
+    <div id="home" className={styles.heroBlockWrapper}>
       <div className="container-global">
         <div className={styles.heroBlock}>
-          <video id="videoBg" className={styles.video} loop muted autoPlay>
-            <source src="/Assets/heroBg.mp4" type="video/mp4" />
+          <video
+            src="/Assets/heroBg.mp4"
+            poster="/Assets/videoPoster.webp"
+            id="videoBg"
+            className={styles.video}
+            loop
+            muted
+            playsInline
+            autoPlay>
+            <source src="/Assets/heroBg.webm" type="video/webm" />
           </video>
           <h1>REPTARIUM</h1>
         </div>

@@ -1,20 +1,21 @@
 import Link from "next/link";
 import styles from "./DiscordBlock.module.scss";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-const DiscordBlock = () => {
+const DiscordBlock = ({ discordTitle, discordSubtitle, discordLink }) => {
   return (
     <div className="container-global">
       <div className={styles.discordBlock}>
         <div className={styles.infoWrapper}>
           <div className={styles.info}>
             <div className={styles.titles}>
-              <h3 className={styles.title}>JOIN THE COMMUNITY</h3>
+              <h3 className={styles.title}>{discordTitle}</h3>
               <div className={styles.subtitle}>
-                Join our Discord community and choosec onsteur
+                {documentToReactComponents(discordSubtitle)}
               </div>
             </div>
 
-            <Link href="#">
+            <Link href={discordLink}>
               <a>Discord</a>
             </Link>
           </div>

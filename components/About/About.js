@@ -1,13 +1,14 @@
 import Image from "next/image";
 import styles from "./About.module.scss";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-const About = () => {
+const About = ({ aboutTitle, aboutText }) => {
   return (
-    <div className="container">
+    <div id="about" className="container">
       <div className={styles.aboutWrapper}>
         <div className={styles.about}>
           <div className={styles.titleWrapper}>
-            <h1 className={styles.title}>ABOUT US</h1>
+            <h1 className={styles.title}>{aboutTitle}</h1>
             <Image
               alt="Title Element"
               width={47}
@@ -16,30 +17,7 @@ const About = () => {
             />
           </div>
           <div className={styles.text}>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              eget purus tristique sem faucibus euismod sagittis vitae sem.
-              Suspendisse ultrices ut nisi et tempor. Nulla consequat tellus
-              cursus mi finibus pulvinar. Aliquam porttitor enim eget dignissim
-              semper. Vestibulum eleifend tincidunt porttitor. Sed eget
-              malesuada velit. Proin consectetur sapien ut justo ornare, nec
-              pellentesque metus vehicula. Quisque scelerisque volutpat augue,
-              eget elementum sem feugiat non. In hac habitasse platea dictumst.
-              Nulla dictum dolor sit amet arcu pellentesque, eu maximus lectus
-              accumsan.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              eget purus tristique sem faucibus euismod sagittis vitae sem.
-              Suspendisse ultrices ut nisi et tempor. Nulla consequat tellus
-              cursus mi finibus pulvinar. Aliquam porttitor enim eget dignissim
-              semper. Vestibulum eleifend tincidunt porttitor. Sed eget
-              malesuada velit. Proin consectetur sapien ut justo ornare, nec
-              pellentesque metus vehicula. Quisque scelerisque volutpat augue,
-              eget elementum sem feugiat non. In hac habitasse platea dictumst.
-              Nulla dictum dolor sit amet arcu pellentesque, eu maximus lectus
-              accumsan.
-            </p>
+            {documentToReactComponents(aboutText)}
           </div>
         </div>
 

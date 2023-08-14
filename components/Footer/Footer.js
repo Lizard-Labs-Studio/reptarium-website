@@ -1,12 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./Footer.module.scss";
+import { Link as Scroll } from "react-scroll";
+import Link from "next/link";
 
 const navigation = [
   {
     id: 1,
     title: "Home",
-    path: "/",
+    path: "home",
     secondPath: "",
     anchor: false,
     iconPath: "",
@@ -14,15 +15,15 @@ const navigation = [
   {
     id: 2,
     title: "About us",
-    path: "/about",
+    path: "about",
     secondPath: "",
     anchor: false,
     iconPath: "",
   },
   {
     id: 3,
-    title: "Contacts",
-    path: "/contacts",
+    title: "Roadmap",
+    path: "roadmap",
     secondPath: "",
     anchor: false,
     iconPath: "",
@@ -78,25 +79,30 @@ const Footer = () => {
 
           <div className={styles.linkWrapper}>
             <div className={styles.linkBlock}>
-              <h3 className={styles.linkBlockTitle}>Pages</h3>
+              <h3 className={styles.linkBlockTitle}>Sections</h3>
               <ul className={styles.linkList}>
                 {navigation.map((link) => (
                   <li key={link.id}>
-                    <Link href={link.path + link.secondPath}>
-                      <a>
-                        {link.title ? link.title : ""}
-                        {link.iconPath ? (
-                          <Image
-                            src={link.iconPath}
-                            alt="Image description"
-                            width="16"
-                            height="16"
-                          />
-                        ) : (
-                          ""
-                        )}
-                      </a>
-                    </Link>
+                    <Scroll
+                      to={link.path}
+                      spy={true}
+                      offset={-60}
+                      isDynamic={true}
+                      smooth={true}
+                      hashSpy={true}
+                      duration={500}>
+                      {link.title ? link.title : ""}
+                      {link.iconPath ? (
+                        <Image
+                          src={link.iconPath}
+                          alt="Image description"
+                          width="16"
+                          height="16"
+                        />
+                      ) : (
+                        ""
+                      )}
+                    </Scroll>
                   </li>
                 ))}
               </ul>
@@ -107,20 +113,8 @@ const Footer = () => {
               <ul className={styles.linkList}>
                 {socials2.map((link) => (
                   <li key={link.id}>
-                    <Link href={link.path + link.secondPath}>
-                      <a>
-                        {link.title ? link.title : ""}
-                        {link.iconPath ? (
-                          <Image
-                            src={link.iconPath}
-                            alt="Image description"
-                            width="16"
-                            height="16"
-                          />
-                        ) : (
-                          ""
-                        )}
-                      </a>
+                    <Link href={link.path}>
+                      <a>{link.title ? link.title : ""}</a>
                     </Link>
                   </li>
                 ))}
@@ -133,7 +127,7 @@ const Footer = () => {
       <div className="container">
         <div className={styles.body}>
           <div className={styles.copyright}>
-            Copyright © 2023 Lizard Labs. All rights reserved.
+            Copyright © 2023 Reptarium. All rights reserved.
           </div>
         </div>
       </div>

@@ -1,13 +1,14 @@
 import Image from "next/image";
 import styles from "./Navbar.module.scss";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 
 const navigation = [
   {
     id: 1,
     title: "Home",
-    path: "/",
+    path: "home",
     secondPath: "",
     anchor: false,
     type: "default",
@@ -17,17 +18,17 @@ const navigation = [
   {
     id: 2,
     title: "About us",
-    path: "/about",
+    path: "about",
     secondPath: "",
-    anchor: false,
+    anchor: true,
     type: "default",
     iconPath: "/icons/IconWorks.svg",
     svg: ``,
   },
   {
     id: 3,
-    title: "Contacts",
-    path: "/contacts",
+    title: "Roadmap",
+    path: "roadmap",
     secondPath: "",
     anchor: false,
     type: "default",
@@ -38,9 +39,37 @@ const navigation = [
 
 const Navbar = () => {
   const router = useRouter();
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // const controlNavbar = () => {
+  //   if (typeof window !== "undefined") {
+  //     if (window.scrollY > lastScrollY) {
+  //       setShow(false);
+  //     } else {
+  //       setShow(true);
+  //     }
+
+  //     setLastScrollY(window.scrollY);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", controlNavbar);
+
+  //     return () => {
+  //       window.addEventListener("scroll", controlNavbar);
+  //     };
+  //   }
+  // }, [lastScrollY]);
 
   return (
-    <div className={styles.navbarWrapper}>
+    <div
+      style={{
+        display: show ? "inherit" : "none",
+      }}
+      className={styles.navbarWrapper}>
       <div className="container">
         <nav className={styles.navbar}>
           <h1 className={styles.logo}>
@@ -50,35 +79,37 @@ const Navbar = () => {
               width={40}
               height={40}
             />
-            LIZARD LABS
+            REPTARIUM
           </h1>
 
           <div className={styles.navbarRightPart}>
             <ul className={styles.linkList}>
               {navigation.map((link) => (
                 <li key={link.id}>
-                  <Link href={link.path + link.secondPath}>
-                    <a
-                      className={
-                        router.pathname === link.path ? styles.activeLink : ""
-                      }>
-                      {link.title ? link.title : ""}
-                      {link.iconPath ? (
-                        <span
-                          className={
-                            link.type === "default" ? styles.iconWrapper : ""
-                          }>
-                          <Image
-                            src={link.iconPath}
-                            alt="Image description"
-                            width="16"
-                            height="16"
-                          />
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </a>
+                  <Link
+                    to={link.path}
+                    spy={true}
+                    offset={-60}
+                    isDynamic={true}
+                    smooth={true}
+                    hashSpy={true}
+                    duration={500}>
+                    {link.title ? link.title : ""}
+                    {link.iconPath ? (
+                      <span
+                        className={
+                          link.type === "default" ? styles.iconWrapper : ""
+                        }>
+                        <Image
+                          src={link.iconPath}
+                          alt="Image description"
+                          width="16"
+                          height="16"
+                        />
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </Link>
                 </li>
               ))}

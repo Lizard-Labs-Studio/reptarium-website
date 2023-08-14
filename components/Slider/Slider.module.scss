@@ -34,23 +34,53 @@
       height: 44px;
       cursor: pointer;
       position: relative;
+      display: inherit;
+
+      @media (max-width: $breakpoint-tablet) {
+        display: none;
+      }
     }
   }
 
-  .sliderDots {
+  .sliderDotsWrapper {
     display: flex;
     flex-direction: row;
-    gap: 8px;
-    margin: 0 auto;
+    align-items: center;
+    gap: 20px;
 
-    .dotWrapper {
-      padding: 10px 0;
+    .btn {
+      min-width: 44px;
+      max-width: 44px;
+      height: 44px;
       cursor: pointer;
-      .dot {
-        width: 60px;
-        height: 4px;
-        border-radius: 2px;
-        background: $primary-color-20;
+      position: relative;
+      display: none;
+
+      @media (max-width: $breakpoint-tablet) {
+        display: inherit;
+      }
+    }
+
+    .sliderDots {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin: 0 auto;
+      width: 100%;
+      justify-content: center;
+
+      .dotWrapper {
+        padding: 10px 0;
+        cursor: pointer;
+        max-width: 60px;
+        width: 100%;
+
+        .dot {
+          width: 100%;
+          height: 4px;
+          border-radius: 2px;
+          background: $primary-color-20;
+        }
       }
     }
   }

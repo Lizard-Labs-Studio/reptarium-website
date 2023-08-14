@@ -1,127 +1,10 @@
 import Image from "next/image";
 import styles from "./Lizards.module.scss";
 import { useState } from "react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-const elementIconsListData = [
-  {
-    id: 1,
-    alt: "Earth Element Icon",
-    src: "/Icons/earthElement.png",
-  },
-  {
-    id: 2,
-    alt: "Fire Element Icon",
-    src: "/Icons/fireElement.png",
-  },
-  {
-    id: 3,
-    alt: "Water Element Icon",
-    src: "/Icons/waterElement.png",
-  },
-  {
-    id: 4,
-    alt: "Wind Element Icon",
-    src: "/Icons/windElement.png",
-  },
-];
-
-const elementsListData = [
-  {
-    id: 1,
-    alt: "Earth Element Icon",
-    src: "/Assets/elementImage.png",
-    title: "Earth Element",
-    skills: [
-      {
-        id: 1,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-1.png",
-      },
-      {
-        id: 2,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-2.png",
-      },
-      {
-        id: 3,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-3.png",
-      },
-    ],
-  },
-  {
-    id: 2,
-    alt: "Fire Element Icon",
-    src: "/Assets/elementImage.png",
-    title: "Fire Element",
-    skills: [
-      {
-        id: 1,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-1.png",
-      },
-      {
-        id: 2,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-2.png",
-      },
-      {
-        id: 3,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-3.png",
-      },
-    ],
-  },
-  {
-    id: 3,
-    alt: "Water Element Icon",
-    src: "/Assets/elementImage.png",
-    title: "Water Element",
-    skills: [
-      {
-        id: 1,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-1.png",
-      },
-      {
-        id: 2,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-2.png",
-      },
-      {
-        id: 3,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-3.png",
-      },
-    ],
-  },
-  {
-    id: 4,
-    alt: "Wind Element Icon",
-    src: "/Assets/elementImage.png",
-    title: "Wind Element",
-    skills: [
-      {
-        id: 1,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-1.png",
-      },
-      {
-        id: 2,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-2.png",
-      },
-      {
-        id: 3,
-        title: "Aqua-Speed",
-        src: "/Icons/waterSkill-3.png",
-      },
-    ],
-  },
-];
-
-const Lizards = () => {
-  const [activeCard, setActiveCard] = useState(1);
+const Lizards = ({ lizardsTitle, lizards }) => {
+  const [activeCard, setActiveCard] = useState(0);
 
   const toggleCard = (index) => {
     setActiveCard(index);
@@ -131,7 +14,7 @@ const Lizards = () => {
     <div className="container">
       <div className={styles.lizards}>
         <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>LIZARDS</h1>
+          <h1 className={styles.title}>{lizardsTitle}</h1>
           <Image
             alt="Title Element"
             width={47}
@@ -142,11 +25,11 @@ const Lizards = () => {
         <div className={styles.elementIconsListWrapper}>
           <div className={styles.elementLine} />
           <ul className={styles.elementIconsList}>
-            {elementIconsListData.map((element, index) => (
+            {lizards.map((element, index) => (
               <li
                 onClick={() => toggleCard(index)}
                 className={styles.elementWrapper}
-                key={element.id}>
+                key={element.fields.slug}>
                 <div
                   style={{
                     border:
@@ -156,10 +39,10 @@ const Lizards = () => {
                   }}
                   className={styles.frontElement}>
                   <Image
-                    src={element.src}
+                    src={`https:${element.fields.elementIcon.fields.file.url}`}
+                    alt={element.fields.elementIcon.fields.title}
                     objectFit="cover"
                     layout="fill"
-                    alt={element.alt}
                   />
                 </div>
                 <div
@@ -168,10 +51,10 @@ const Lizards = () => {
                   }}
                   className={styles.bgElement}>
                   <Image
-                    src={element.src}
+                    src={`https:${element.fields.elementIcon.fields.file.url}`}
+                    alt={element.fields.elementIcon.fields.title}
                     objectFit="cover"
                     layout="fill"
-                    alt={element.alt}
                   />
                 </div>
               </li>
@@ -180,26 +63,26 @@ const Lizards = () => {
           <div className={styles.elementLine} />
         </div>
 
-        {elementsListData.map((card, index) => (
+        {lizards.map((card, index) => (
           <div
             style={{
               display: activeCard === index ? "inherit" : "none",
             }}
-            key={card.id}
+            key={card.fields.slug}
             className={styles.elementCard}>
             <div className={styles.elementImage}>
               <div className={styles.elementImageFront}>
                 <Image
-                  src={card.src}
-                  alt={card.alt}
+                  src={`https:${card.fields.image.fields.file.url}`}
+                  alt={card.fields.image.fields.title}
                   objectFit="cover"
                   layout="fill"
                 />
               </div>
               <div className={styles.elementImageBg}>
                 <Image
-                  src={card.src}
-                  alt={card.alt}
+                  src={`https:${card.fields.image.fields.file.url}`}
+                  alt={card.fields.image.fields.title}
                   objectFit="cover"
                   layout="fill"
                 />
@@ -207,30 +90,28 @@ const Lizards = () => {
             </div>
             <div className={styles.elementCardBody}>
               <div className={styles.elementCardTitles}>
-                <h3 className={styles.cardTitle}>{card.title}</h3>
+                <h3 className={styles.cardTitle}>{card.fields.title}</h3>
                 <ul className={styles.cardSkills}>
-                  {card.skills.map((skill, index) => (
-                    <li key={skill.id} className={styles.cardSkill}>
+                  {card.fields.skills.map((skill, index) => (
+                    <li key={index} className={styles.cardSkill}>
                       <div className={styles.skillIcon}>
                         <Image
-                          src={skill.src}
-                          alt="Skill Icon"
+                          src={`https:${skill.fields.file.url}`}
+                          alt={skill.fields.title}
                           objectFit="cover"
                           layout="fill"
                         />
                       </div>
-                      <div className={styles.skillTitle}>{skill.title}</div>
+                      <div className={styles.skillTitle}>
+                        {skill.fields.title}
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
 
               <div className={styles.cardDescription}>
-                Aquilon is a mesmerizing Water Lizard hailing from the depths of
-                the Crystal Lake, in the online NFT game. Her skin color ranges
-                from soft blues to deep navy, providing camouflage in aquatic
-                environments. Her eye markings shimmer, granting her superior
-                underwater vision.
+                {documentToReactComponents(card.fields.description)}
               </div>
             </div>
           </div>

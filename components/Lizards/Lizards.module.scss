@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  margin: 200px 0 150px 0;
+  margin: 150px 0 0 0;
 
   .titleWrapper {
     display: flex;
@@ -17,7 +17,22 @@
       font-size: 60px;
       font-weight: 900;
       font-family: "Roboto", sans-serif;
+      line-height: 90%;
+      color: $primary-color-95;
       margin: 0;
+      text-transform: uppercase;
+
+      @media (max-width: $breakpoint-laptop) {
+        font-size: 60px;
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 48px;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 36px;
+      }
     }
   }
 
@@ -93,6 +108,20 @@
     flex-direction: row;
     gap: 20px;
     max-width: 800px;
+    animation: slide 0.5s ease  forwards;
+
+    @keyframes slide {
+      from {
+        transform: translateY(20px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
 
     .elementImage {
       min-width: 300px;
@@ -168,6 +197,10 @@
             .skillTitle {
               font-size: 16px;
               color: $primary-color-80;
+
+              @media (max-width: $breakpoint-mobile) {
+                font-size: 14px;
+              }
             }
           }
         }
@@ -177,6 +210,10 @@
         font-size: 16px;
         line-height: 140%;
         color: $primary-color-80;
+
+        p {
+          margin: 0;
+        }
       }
     }
   }

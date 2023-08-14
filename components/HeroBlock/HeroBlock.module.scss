@@ -1,3 +1,5 @@
+@import "../../styles/Constants.module.scss";
+
 .heroBlockWrapper {
   width: 100%;
   max-width: 2000px;
@@ -9,6 +11,10 @@
     display: flex;
     justify-content: center;
 
+    @media (max-width: $breakpoint-mobile) {
+      height: 660px;
+    }
+
     h1 {
       margin: 0;
       font-family: "Roboto", sans-serif;
@@ -18,6 +24,19 @@
       text-shadow: 0 0 8px rgba(12, 13, 13, 0.25);
       margin: 300px 0 0 0;
       color: white;
+
+      @media (max-width: $breakpoint-laptop) {
+        font-size: 68px;
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 48px;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 42px;
+        margin: 260px 0 0 0;
+      }
     }
   }
 

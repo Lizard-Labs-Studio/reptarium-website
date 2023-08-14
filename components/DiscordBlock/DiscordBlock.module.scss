@@ -7,7 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 200px 0;
+  margin: 150px 0;
   position: relative;
 
   &::after {
@@ -75,6 +75,19 @@
           font-family: "Roboto", sans-serif;
           margin: 0;
           text-align: center;
+          text-transform: uppercase;
+
+          @media (max-width: $breakpoint-laptop) {
+            font-size: 60px;
+          }
+    
+          @media (max-width: $breakpoint-tablet) {
+            font-size: 48px;
+          }
+    
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 36px;
+          }
         }
 
         .subtitle {

@@ -25,7 +25,7 @@ const dataSlider = [
   },
 ];
 
-const Slider = () => {
+const Slider = ({ imageSlider }) => {
   const [slideIndex, setSlideIndex] = useState(1);
 
   const nextSlide = () => {
@@ -66,17 +66,17 @@ const Slider = () => {
           />
         </div>
         <div className={styles.imageWrapper}>
-          {dataSlider.map((obj, index) => {
+          {imageSlider.map((obj, index) => {
             return (
               <div
                 style={{
                   opacity: slideIndex === index + 1 ? 1 : 0,
                 }}
                 className={styles.sliderImage}
-                key={obj.id}>
+                key={obj.fields.slug}>
                 <Image
-                  src={`/Slider/img${index + 1}.png`}
-                  alt="Slider Image"
+                  src={`https:${obj.fields.image.fields.file.url}`}
+                  alt={obj.fields.title}
                   objectFit="cover"
                   layout="fill"
                 />
@@ -93,19 +93,43 @@ const Slider = () => {
           />
         </div>
       </div>
-      <div className={styles.sliderDots}>
-        {Array.from({ length: dataSlider.length }).map((item, index) => (
-          <div
-            onClick={() => moveDot(index + 1)}
-            key={index}
-            className={styles.dotWrapper}>
+
+      <div className={styles.sliderDotsWrapper}>
+        <div
+          onClick={prevSlide}
+          style={{
+            transform: "rotate(180deg)",
+          }}
+          className={styles.btn}>
+          <Image
+            src="/Icons/arrowCircle.svg"
+            alt="Right Button Icon"
+            objectFit="cover"
+            layout="fill"
+          />
+        </div>
+        <div className={styles.sliderDots}>
+          {imageSlider.map((item, index) => (
             <div
-              style={{
-                background: slideIndex === index + 1 ? "#7A8585" : "#313535",
-              }}
-              className={styles.dot}></div>
-          </div>
-        ))}
+              onClick={() => moveDot(index + 1)}
+              key={index}
+              className={styles.dotWrapper}>
+              <div
+                style={{
+                  background: slideIndex === index + 1 ? "#7A8585" : "#313535",
+                }}
+                className={styles.dot}></div>
+            </div>
+          ))}
+        </div>
+        <div onClick={nextSlide} className={styles.btn}>
+          <Image
+            src="/Icons/arrowCircle.svg"
+            alt="Right Button Icon"
+            objectFit="cover"
+            layout="fill"
+          />
+        </div>
       </div>
     </div>
   );

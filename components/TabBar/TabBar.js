@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-scroll";
 import { useRouter } from "next/router";
 import styles from "./TabBar.module.scss";
 
@@ -7,7 +7,7 @@ const navigation = [
   {
     id: 1,
     title: "Home",
-    path: "/",
+    path: "home",
     secondPath: "",
     anchor: false,
     type: "default",
@@ -16,7 +16,7 @@ const navigation = [
   {
     id: 2,
     title: "About us",
-    path: "/about",
+    path: "about",
     secondPath: "",
     anchor: false,
     type: "default",
@@ -24,8 +24,8 @@ const navigation = [
   },
   {
     id: 3,
-    title: "Contacts",
-    path: "/contacts",
+    title: "Roadmap",
+    path: "roadmap",
     secondPath: "",
     anchor: false,
     type: "default",
@@ -42,25 +42,27 @@ const TabBar = () => {
           <li
             className={link.type === "default" ? "" : styles.hideLink}
             key={link.id}>
-            <Link href={link.path + link.secondPath}>
-              <a
-                className={
-                  router.pathname === link.path ? styles.activeLink : ""
-                }>
-                {link.iconPath ? (
-                  <span>
-                    <Image
-                      src={link.iconPath}
-                      alt="Image description"
-                      width="24"
-                      height="24"
-                    />
-                  </span>
-                ) : (
-                  ""
-                )}
-                <p>{link.title ? link.title : ""}</p>
-              </a>
+            <Link
+              to={link.path}
+              spy={true}
+              offset={-60}
+              isDynamic={true}
+              smooth={true}
+              hashSpy={true}
+              duration={500}>
+              {link.iconPath ? (
+                <span>
+                  <Image
+                    src={link.iconPath}
+                    alt="Image description"
+                    width="24"
+                    height="24"
+                  />
+                </span>
+              ) : (
+                ""
+              )}
+              <p>{link.title ? link.title : ""}</p>
             </Link>
           </li>
         ))}
