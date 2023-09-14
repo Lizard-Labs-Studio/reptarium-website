@@ -33,8 +33,8 @@ const navigation = [
 const socials2 = [
   {
     id: 1,
-    title: "Instagram",
-    path: "#",
+    title: "YouTube",
+    path: "https://www.youtube.com/channel/UCpAL7hR-yue3Q08uKc7f8xQ",
     secondPath: "",
     anchor: false,
     iconPath: "",
@@ -42,7 +42,7 @@ const socials2 = [
   {
     id: 2,
     title: "Discord",
-    path: "#",
+    path: "https://discord.gg/RTtwwqE7Yp",
     secondPath: "",
     anchor: false,
     iconPath: "",
@@ -50,7 +50,7 @@ const socials2 = [
   {
     id: 3,
     title: "Twitter",
-    path: "#",
+    path: "https://twitter.com/Reptarium_io",
     secondPath: "",
     anchor: false,
     iconPath: "",
@@ -114,7 +114,9 @@ const Footer = () => {
                 {socials2.map((link) => (
                   <li key={link.id}>
                     <Link href={link.path}>
-                      <a>{link.title ? link.title : ""}</a>
+                      <a rel="noopener noreferrer" target="_blank">
+                        {link.title ? link.title : ""}
+                      </a>
                     </Link>
                   </li>
                 ))}

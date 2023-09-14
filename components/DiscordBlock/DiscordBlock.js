@@ -16,7 +16,9 @@ const DiscordBlock = ({ discordTitle, discordSubtitle, discordLink }) => {
             </div>
 
             <Link href={discordLink}>
-              <a>Discord</a>
+              <a rel="noopener noreferrer" target="_blank">
+                Discord
+              </a>
             </Link>
           </div>
         </div>
