@@ -29,10 +29,10 @@ export default function Home({ home, imageSlider, lizards, roadmap }) {
 
       <HeroBlock />
       <About aboutTitle={aboutTitle} aboutText={aboutText} />
-      <SliderBlock
+      {/* <SliderBlock
         imageSliderTitle={imageSliderTitle}
         imageSlider={imageSlider}
-      />
+      /> */}
       <Lizards lizardsTitle={lizardsTitle} lizards={lizards} />
       <DiscordBlock
         discordTitle={discordTitle}

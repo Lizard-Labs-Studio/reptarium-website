@@ -15,7 +15,7 @@ const navigation = [
   },
   {
     id: 2,
-    title: "About us",
+    title: "About project",
     path: "about",
     secondPath: "",
     anchor: false,
