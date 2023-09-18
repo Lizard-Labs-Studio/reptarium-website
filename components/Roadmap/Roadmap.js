@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./Roadmap.module.scss";
 import { useState } from "react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const Roadmap = ({ roadmapTitle, roadmap }) => {
   const [listOpen, setListOpen] = useState(false);
@@ -41,11 +42,9 @@ const Roadmap = ({ roadmapTitle, roadmap }) => {
                     </div>
 
                     <div className={styles.cardText}>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia, repudiandae. Lorem ipsum dolor, sit amet
-                      consectetur adipisicing elit. Aperiam ea iste inventore.
-                      Asperiores, delectus voluptas quis alias commodi vel
-                      nobis!
+                      {
+                        documentToReactComponents(card.fields.description)
+                      }
                     </div>
                   </div>
                 </div>
