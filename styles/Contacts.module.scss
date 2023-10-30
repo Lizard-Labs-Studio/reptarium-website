@@ -1,0 +1,446 @@
+@import "./Constants.module.scss";
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    margin: 150px 0 200px 0;
+    gap: 40px;
+
+    .titles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        .title {
+            font-size: 60px;
+            font-weight: 900;
+            font-family: "Roboto", sans-serif;
+            line-height: 90%;
+            color: $primary-color-95;
+            margin: 0;
+            text-transform: uppercase;
+
+            @media (max-width: $breakpoint-laptop) {
+                font-size: 60px;
+            }
+
+            @media (max-width: $breakpoint-tablet) {
+                font-size: 48px;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                font-size: 36px;
+            }
+        }
+
+        .subtitle {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            color: $primary-color-60;
+            font-weight: 400;
+            max-width: 520px;
+            text-align: center;
+            letter-spacing: 0.02em;
+
+            p {
+                margin: 0;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .formWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 60px;
+        width: 100%;
+
+        .button {
+            width: fit-content;
+            height: 40px;
+            display: flex;
+            appearance: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: linear-gradient(90deg, #3f3f3e -4.84%, #82847b 113.08%) padding-box,
+                linear-gradient(180deg, #999e9b -15.09%, #434444 109.43%) border-box;
+            border-radius: 10px;
+            padding: 0 36px;
+            outline: none;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
+            font-family: "Inter", sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 130%;
+            letter-spacing: 0.02em;
+            color: $primary-color-80;
+            margin: 0;
+            border: none;
+
+            &:hover {
+                box-shadow: 0px 0px 30px rgba(152, 157, 154, 0.25);
+                color: $primary-color-90;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        .buttonWrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            display: none;
+
+            @media (max-width: $breakpoint-tablet) {
+                display: inherit;
+            }
+        }
+
+        .contactForm {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .formHead {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                @media (max-width: $breakpoint-tablet) {
+                    flex-direction: column;
+                }
+            }
+        }
+
+        @media (max-width: $breakpoint-tablet) {
+            flex-direction: column-reverse;
+        }
+    }
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: $breakpoint-tablet) {
+        button {
+            display: none !important;
+        }
+    }
+
+    .contactInfoWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+
+        @media (max-width: $breakpoint-tablet) {
+            flex-direction: row;
+        }
+
+        .socialsBlock {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .socialTitle {
+                font-size: 16px;
+                color: $primary-color-60;
+            }
+
+            .socialLinks {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+                flex-wrap: wrap;
+
+                .facebookIcon {
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("/icons/IconFacebook.svg");
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(217, 217, 217, 0);
+                        filter: blur(5px);
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        transition: 0.2s all ease-in-out;
+                    }
+
+                    &:hover::before {
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(217, 217, 217, 0.2);
+                        filter: blur(5px);
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        transition: 0.2s all ease-in-out;
+                    }
+                }
+
+                .instagramIcon {
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("/icons/IconInstagram.svg");
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(217, 217, 217, 0);
+                        filter: blur(5px);
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        transition: 0.2s all ease-in-out;
+                    }
+
+                    &:hover::before {
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(217, 217, 217, 0.2);
+                        filter: blur(5px);
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        transition: 0.2s all ease-in-out;
+                    }
+                }
+
+                .linkedinIcon {
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("/icons/IconLinkedin.svg");
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(217, 217, 217, 0);
+                        filter: blur(5px);
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        transition: 0.2s all ease-in-out;
+                    }
+
+                    &:hover::before {
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(217, 217, 217, 0.2);
+                        filter: blur(5px);
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        transition: 0.2s all ease-in-out;
+                    }
+                }
+            }
+        }
+
+        .mailBlock {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+
+            .mailTitle {
+                font-size: 16px;
+                color: $primary-color-60;
+            }
+
+            .mail {
+                margin: 0;
+
+                a {
+                    margin: 0;
+                    font-size: 16px;
+                    color: $primary-color-90;
+                }
+            }
+        }
+    }
+}
+
+.textFieldBodyFull {
+    position: relative;
+    width: 100%;
+    height: 300px;
+
+    textarea {
+        padding: 12px;
+        // overflow: hidden;
+        resize: none;
+    }
+}
+
+.textFieldWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .errorMsg {
+        margin: 0 0 0 12px;
+        font-size: 14px;
+        color: #d65c5c;
+    }
+}
+
+.textFieldBody {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.textField {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid $primary-color-20;
+    border-radius: 6px;
+
+    outline: none;
+    padding: 4px 4px 4px 12px;
+    box-sizing: border-box;
+    background: none;
+    color: $primary-color-80;
+
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    transition: 0.1s all ease-in-out;
+
+    &:hover {
+        border-color: $primary-color-50;
+        transition: 0.1s all ease-in-out;
+    }
+
+    &:focus {
+        border-color: $primary-color-80;
+        transition: 0.1s all ease-in-out;
+    }
+
+    &:-webkit-autofill {
+        -webkit-text-fill-color: $primary-color-80;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+}
+
+.label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 2px;
+    color: $primary-color-40;
+    pointer-events: none;
+
+    font-family: "SFProText", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+    cursor: text;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    background-color: $primary-color-5;
+}
+
+.labelTop {
+    position: absolute;
+    left: 12px;
+    top: 20px;
+    transform: translateY(-50%);
+    padding: 0 2px;
+    color: $primary-color-40;
+    pointer-events: none;
+
+    font-family: "SFProText", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+    cursor: text;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    background-color: $primary-color-5;
+}
+
+/* 
+1. When the input is in the focus state
+reduce the size of the label and move upwards 
+
+2. Keep label state when content is in input field 
+*/
+
+.textField:focus~.label,
+.textField:not(:placeholder-shown).textField:not(:focus)~.label {
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 10px;
+    left: 6px;
+    color: $primary-color-80;
+    transition: 0.1s all ease-in-out;
+}
+
+.textField:focus~.labelTop,
+.textField:not(:placeholder-shown).textField:not(:focus)~.labelTop {
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 10px;
+    left: 6px;
+    color: $primary-color-80;
+    transition: 0.1s all ease-in-out;
+}

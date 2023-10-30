@@ -6,7 +6,7 @@ const HeroBlock = () => {
       <div className="container-global">
         <div className={styles.heroBlock}>
           <video
-            src="/Assets/heroBg.mp4"
+            // src="/Assets/heroBg.mp4"
             poster="/Assets/videoPoster.webp"
             id="videoBg"
             className={styles.video}
