@@ -105,7 +105,7 @@ const Footer = () => {
               REPTARIUM
             </h1>
             <p className={styles.logoDescription}>
-              Let’s make something great togather
+              Let’s make something great together
             </p>
           </div>
 

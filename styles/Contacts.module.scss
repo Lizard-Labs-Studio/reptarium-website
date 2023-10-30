@@ -60,6 +60,14 @@
         gap: 60px;
         width: 100%;
 
+        .recaptchaWrapper {
+            display: inherit;
+
+            @media (max-width: $breakpoint-tablet) {
+                display: none;
+            }
+        }
+
         .button {
             width: fit-content;
             height: 40px;
@@ -96,12 +104,31 @@
 
         .buttonWrapper {
             width: 100%;
-            display: flex;
             justify-content: center;
             display: none;
 
             @media (max-width: $breakpoint-tablet) {
-                display: inherit;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 32px;
+
+                // .button {
+                //     align-self: center;
+                // }
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 20px;
+
+                // .button {
+                //     align-self: center;
+                // }
             }
         }
 

@@ -6,6 +6,9 @@ import client from "../contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
+import axios from 'axios';
+import { successToast, warnToast } from '../utils/toastMessages';
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -29,67 +32,60 @@ const Contacts = ({ contacts, socials }) => {
         email: "",
         message: "",
     });
-
+    const [captcha, setCaptcha] = useState();
     const { heroTitle, heroSubtitle, email } = contacts.fields;
 
-    const sendEmail = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
+        if (formInfo.name && formInfo.email && formInfo.message) {
+            let token = captcha;
 
-        if (validate()) {
-            emailjs
-                .sendForm(
-                    process.env.NEXT_PUBLIC_SERVICE_ID,
-                    process.env.NEXT_PUBLIC_TEMPLATE_ID,
-                    form.current,
-                    process.env.NEXT_PUBLIC_PUBLIC_KEY
-                )
-                .then(
-                    () => {
-                        setFormInfo({
-                            name: "",
-                            email: "",
-                            message: "",
-                        });
-                        toast.success("Email has been sent", {
-                            position: "top-right",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "dark",
-                        });
-                    },
-                    (error) => {
-                        console.log(error.text);
-                    }
-                );
-        } else {
-            toast.warn("One of the fields is empty", {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-        }
-    };
+            if (token) {
+                let valid_token = await verifyToken(token);
 
-    const validate = () => {
-        if (
-            formInfo.name !== "" &&
-            formInfo.email !== "" &&
-            formInfo.message !== ""
-        ) {
-            return true;
+                if (valid_token.success) {
+                    emailjs
+                        .sendForm(
+                            process.env.NEXT_PUBLIC_SERVICE_ID,
+                            process.env.NEXT_PUBLIC_TEMPLATE_ID,
+                            form.current,
+                            process.env.NEXT_PUBLIC_PUBLIC_KEY
+                        )
+                        .then(
+                            () => {
+                                setFormInfo({
+                                    name: "",
+                                    email: "",
+                                    message: "",
+                                });
+                                successToast("Email has been sent");
+                            },
+                            (error) => {
+
+                            }
+                        );
+                } else {
+                    warnToast("Recaptcha Token invalid");
+                }
+            } else {
+                warnToast("You must confirm you are not a robot");
+            }
         } else {
-            return false;
+            warnToast("One of the fields is empty");
         }
-    };
+    }
+
+    const verifyToken = async (token) => {
+        try {
+            let response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/verify-token`, {
+                secret: process.env.RECAPTCHA_SECRET_KEY,
+                token
+            })
+            return response.data;
+        } catch (error) {
+
+        }
+    }
 
     return (
         <motion.div
@@ -103,15 +99,6 @@ const Contacts = ({ contacts, socials }) => {
             </Head>
 
             <div className={styles.contacts}>
-                {/* <div className={styles.titleWrapper}>
-                    <h1 className={styles.title}>{heroTitle.split(" ")[0]}{" "}</h1>
-                    <Image
-                        alt="Title Element"
-                        width={47}
-                        height={8}
-                        src="/Assets/titleElement.svg"
-                    />
-                </div> */}
                 <div className={styles.titles}>
                     <h3 className={styles.title}>
                         {heroTitle}
@@ -121,8 +108,9 @@ const Contacts = ({ contacts, socials }) => {
                     </h4>
                 </div>
 
-                <form ref={form} onSubmit={sendEmail} className={styles.formWrapper}>
+                <form ref={form} onSubmit={handleSubmit} className={styles.formWrapper}>
                     <div className={styles.buttonWrapper}>
+                        <ReCAPTCHA theme="dark" sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} onChange={setCaptcha} />
                         <button className={styles.button}>Send</button>
                     </div>
                     <div className={styles.contactForm}>
@@ -208,7 +196,14 @@ const Contacts = ({ contacts, socials }) => {
                             </div>
                         </div>
 
+                        <div className={styles.recaptchaWrapper}>
+                            <ReCAPTCHA theme="dark" sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} onChange={setCaptcha} />
+                        </div>
+
+
                         <button className={styles.button}>Send</button>
+
+
                     </div>
                 </form>
             </div>
