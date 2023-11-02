@@ -8,6 +8,11 @@ import client from "../contentful";
 const EconomicSystem = ({ economicSystem }) => {
     return (
         <div className="container">
+
+            <Head>
+                <title>Lizard Labs | Economic System</title>
+            </Head>
+
             <div className={styles.economicSystem}>
                 <div className={styles.sidebar}>
                     <h2 className={styles.sidebarTitle}>Economic system</h2>
