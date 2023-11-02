@@ -1,0 +1,170 @@
+@import "./Constants.module.scss";
+
+.economicSystem {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: relative;
+    margin: 0 0 100px 0;
+    padding: 100px 0 0 0;
+
+    @media (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 68px;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        @media (max-width: $breakpoint-tablet) {
+            width: 100%;
+            position: relative;
+            top: 0;
+        }
+
+        .sidebarTitle {
+            margin: 0;
+            font-size: 24px;
+            color: $primary-color-80;
+        }
+
+        .sidebarListWrapper {
+            .sidebarList {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+                padding: 12px;
+                background-color: $primary-color-10;
+                border-radius: 8px;
+                border: 1px solid $primary-color-15;
+                width: 200px;
+                margin: 0;
+
+                @media (max-width: $breakpoint-tablet) {
+                    width: auto;
+                }
+
+                .sidebarItemWrapper {
+                    padding: 0 0 10px 0;
+                    border-bottom: 1px solid $primary-color-15;
+                    margin: 0 0 10px 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+
+                    .sidebarItemTitle {
+                        color: $primary-color-80;
+                    }
+
+                    .sidebarSubtitleList {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        padding: 0 0 0 8px;
+
+                        .sidebarSubtitle {
+                            color: $primary-color-60;
+                        }
+                    }
+
+
+
+
+                    &:last-child {
+                        border: 0;
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .contentList {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        .contentListTitle {
+            margin: 0;
+            color: $primary-color-80;
+            font-size: 24px;
+        }
+
+        .contentListWrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 32px;
+
+            .contentItem {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .contentItemSubtitle {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+
+                    .contentItemTitle {
+                        font-size: 18px;
+                        color: $primary-color-70;
+                        font-weight: 400;
+                        margin: 0;
+                    }
+
+                    .contentItemText {
+                        margin: 0;
+                        font-size: 16px;
+                        font-weight: 400;
+                        font-family: "Inter", sans-serif;
+                        line-height: 130%;
+                        color: $primary-color-50;
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+
+
+    .sticky {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        position: sticky;
+        top: 10px;
+        width: 140px;
+        height: 140px;
+        color: #fff;
+        background: #30b298;
+    }
+
+    .content {
+        height: 2000px;
+        width: 100%;
+        background: rgb(117, 117, 117);
+    }
+}

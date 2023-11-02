@@ -9,7 +9,7 @@ import styles from "../styles/Home.module.scss";
 import client from "../contentful";
 import Head from "next/head";
 
-export default function Home({ home, imageSlider, lizards, roadmap }) {
+export default function Home({ home, imageSlider, lizards, roadmap, economicSystem }) {
   const {
     aboutTitle,
     aboutText,
@@ -22,7 +22,7 @@ export default function Home({ home, imageSlider, lizards, roadmap }) {
   } = home.fields;
 
   return (
-    <div>
+    <div className={styles.home}>
       <Head>
         <title>Reptarium</title>
       </Head>
@@ -62,6 +62,10 @@ export const getServerSideProps = async () => {
     content_type: "roadMap",
   });
 
+  const economicSystem = await client.getEntries({
+    content_type: "economicSystem",
+  });
+
   const [homePage] = home.items;
 
   return {
@@ -70,6 +74,7 @@ export const getServerSideProps = async () => {
       imageSlider: imageSlider.items,
       lizards: lizards.items,
       roadmap: roadmap.items,
+      economicSystem: economicSystem.items
     },
   };
 };

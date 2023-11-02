@@ -25,6 +25,13 @@ const navigation = [
       },
       {
         id: 2,
+        title: "Lizards",
+        path: "lizards",
+        type: "default",
+        iconPath: "/icons/IconCV.svg",
+      },
+      {
+        id: 3,
         title: "Roadmap",
         path: "roadmap",
         type: "default",
@@ -41,6 +48,18 @@ const navigation = [
     anchor: false,
     type: "default",
     iconPath: "/icons/IconCV.svg",
+    svg: ``,
+    submenu: [],
+    isSubmenu: false
+  },
+  {
+    id: 3,
+    title: "Economic system",
+    path: "/economicSystem",
+    secondPath: "",
+    anchor: false,
+    type: "default",
+    iconPath: "/icons/IconWorks.svg",
     svg: ``,
     submenu: [],
     isSubmenu: false

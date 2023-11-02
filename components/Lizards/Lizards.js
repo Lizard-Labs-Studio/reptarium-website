@@ -11,7 +11,7 @@ const Lizards = ({ lizardsTitle, lizards }) => {
   };
 
   return (
-    <div className="container">
+    <div id="lizards" className="container">
       <div className={styles.lizards}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.title}>{lizardsTitle}</h1>
