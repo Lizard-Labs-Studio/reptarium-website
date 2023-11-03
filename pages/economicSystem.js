@@ -26,7 +26,7 @@ const EconomicSystem = ({ economicSystem }) => {
                                 <div className={styles.sidebarSubtitleList}>
                                     {
                                         economicSystem.map((sidebarSubtitle) => (
-                                            <div className={styles.sidebarSubtitle}>
+                                            <div key={sidebarSubtitle.fields.slug} className={styles.sidebarSubtitle}>
                                                 {
                                                     sidebarSubtitle.fields.title
                                                 }
