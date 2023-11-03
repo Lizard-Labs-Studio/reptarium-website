@@ -116,6 +116,61 @@
                     flex-direction: column;
                     gap: 16px;
 
+                    .contentItemList {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 24px;
+
+                        .contentItemCard {
+                            display: flex;
+                            flex-direction: row;
+                            gap: 24px;
+
+                            @media (max-width: $breakpoint-tablet) {
+                                flex-direction: column-reverse;
+                                padding: 0 0 0 24px;
+                            }
+
+                            .cardImage {
+                                min-width: 270px;
+                                width: 270px;
+                                height: 270px;
+                                position: relative;
+                                border: 1px solid rgba(255, 255, 255, 0.2);
+                                border-radius: 12px;
+
+                                @media (max-width: $breakpoint-laptop) {
+                                    min-width: 200px;
+                                    width: 200px;
+                                    height: 200px;
+                                }
+                            }
+
+                            .cardBody {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 12px;
+
+                                .cardTitle {
+                                    margin: 0;
+                                    font-size: 18px;
+                                    color: $primary-color-70;
+                                    font-weight: 400;
+                                }
+
+                                .cardText {
+                                    margin: 0;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    font-family: "Inter", sans-serif;
+                                    line-height: 130%;
+                                    color: $primary-color-50;
+                                }
+                            }
+                        }
+
+                    }
+
 
                     .contentItemTitle {
                         font-size: 18px;
