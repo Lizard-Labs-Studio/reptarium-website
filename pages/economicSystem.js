@@ -141,6 +141,43 @@ const EconomicSystem = ({ economicSystem }) => {
                                 <div className={styles.contentItemText}>
                                     Although the primordial world starts small, the basic elements are just the beginning, by properly cultivating them and raising them you can get truly very rare NFT characters. In addition, you can breed pets in the game by crossbreeding and raising new unique types of creatures.
                                 </div>
+
+
+                                <div className={styles.contentItemListWrapper}>
+                                    <div className={styles.contentItemListRev}>
+                                        <div className={styles.contentItemCardRev}>
+                                            <div className={styles.cardImage}>
+                                                <Image
+                                                    alt="Title Element"
+                                                    layout='fill'
+                                                    objectFit='contain'
+                                                    src="/Assets/pet-shark.webp"
+                                                />
+                                            </div>
+
+                                            <div className={styles.cardBody}>
+                                                <h3 className={styles.cardTitle}>Flamp</h3>
+
+                                            </div>
+                                        </div>
+
+                                        <div className={styles.contentItemCardRev}>
+                                            <div className={styles.cardImage}>
+                                                <Image
+                                                    alt="Title Element"
+                                                    layout='fill'
+                                                    objectFit='contain'
+                                                    src="/Assets/pet-golem.webp"
+                                                />
+                                            </div>
+
+                                            <div className={styles.cardBody}>
+                                                <h3 className={styles.cardTitle}>Gromp</h3>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
